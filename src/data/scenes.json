@@ -1,0 +1,39 @@
+[
+  {
+    "id": "scene-1",
+    "title": "Le nid mystérieux",
+    "video": "/assets/scenes/scene1.mp4",
+    "text": "Bienvenue au nid fabuleux. Explorez et jouez.",
+    "questions": [
+      {
+        "q": "Quel est le nom de l'oiseau?",
+        "choices": ["Aigle","Rossignol","Colibri"]
+      }
+    ],
+    "game": "ColoringGame"
+  },
+  {
+    "id": "scene-2",
+    "title": "Orage doux",
+    "video": "/assets/scenes/scene2.mp4",
+    "text": "Adoucissez la foudre pour protéger le nid.",
+    "questions": [],
+    "game": "LightningGame"
+  },
+  {
+    "id": "scene-3",
+    "title": "Bulle de sécurité",
+    "video": "/assets/scenes/scene3.mp4",
+    "text": "Guide la bulle autour du nid.",
+    "questions": [],
+    "game": "BubbleGame"
+  },
+  {
+    "id": "scene-4",
+    "title": "Yin Yang apaisant",
+    "video": "/assets/scenes/scene4.mp4",
+    "text": "Faites tourner le cercle pour équilibrer.",
+    "questions": [],
+    "game": "YinYangGame"
+  }
+]
