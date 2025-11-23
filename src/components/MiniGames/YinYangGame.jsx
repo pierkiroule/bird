@@ -1,36 +1,51 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 
-export default function YinYangGame() {
+export default function YinYangGame({ hint = 'Touchez et faites tourner pour équilibrer.' }) {
   const wrapRef = useRef(null)
+  const [angle, setAngle] = useState(0)
+  const draggingRef = useRef(false)
 
-  function onPointerDown(e) {
-    const el = wrapRef.current
-    if (!el) return
-    el.setPointerCapture(e.pointerId)
-    const rect = el.getBoundingClientRect()
+  function updateAngle(e) {
+    const wrap = wrapRef.current
+    if (!wrap) return
+    const rect = wrap.getBoundingClientRect()
     const cx = rect.left + rect.width / 2
     const cy = rect.top + rect.height / 2
+    const point = e.touches ? e.touches[0] : e
+    if (!point) return
+    const rad = Math.atan2(point.clientY - cy, point.clientX - cx)
+    setAngle(rad)
+  }
 
-    function move(ev) {
-      const ang = Math.atan2(ev.clientY - cy, ev.clientX - cx)
-      el.style.transform = `rotate(${ang}rad)`
-    }
-    function up(ev) {
-      el.removeEventListener('pointermove', move)
-      el.removeEventListener('pointerup', up)
-      try { el.releasePointerCapture(ev.pointerId) } catch {}
-    }
+  function start(e) {
+    draggingRef.current = true
+    updateAngle(e)
+  }
 
-    el.addEventListener('pointermove', move)
-    el.addEventListener('pointerup', up)
+  function move(e) {
+    if (!draggingRef.current) return
+    e.preventDefault()
+    updateAngle(e)
+  }
+
+  function end() {
+    draggingRef.current = false
   }
 
   return (
-    <div className="yinyang-game">
-      <div className="yinyang-wrap" ref={wrapRef} onPointerDown={onPointerDown}>
-        <div className="yinyang" />
+    <section className="mini-game-card yinyang-game">
+      <div
+        ref={wrapRef}
+        className="yinyang-wrap"
+        onPointerDown={start}
+        onPointerMove={move}
+        onPointerUp={end}
+        onPointerLeave={end}
+        onPointerCancel={end}
+      >
+        <div className="yinyang" style={{ transform: `rotate(${angle}rad)` }} />
       </div>
-      <p className="hint">Touchez et faites tourner le cercle.</p>
-    </div>
+      <p className="hint">{hint}</p>
+    </section>
   )
 }

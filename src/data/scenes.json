@@ -1,39 +1,99 @@
 [
   {
     "id": "scene-1",
-    "title": "Le nid mystérieux",
+    "title": "Éveil au nid transnumériste",
     "video": "/assets/scenes/scene1.mp4",
-    "text": "Bienvenue au nid fabuleux. Explorez et jouez.",
+    "text": "Un oisillon cyber-organique s’éveille. Observe ses premiers gestes et écoute son souffle mêlé aux circuits.",
     "questions": [
       {
-        "q": "Quel est le nom de l'oiseau?",
-        "choices": ["Aigle","Rossignol","Colibri"]
+        "q": "Quelle énergie sens-tu dans le nid ?",
+        "choices": ["Chaleur douce", "Vibrations électriques", "Silence apaisé"]
       }
     ],
-    "game": "ColoringGame"
+    "game": "ColoringGame",
+    "gameHint": "Colorie les circuits qui protègent l’oisillon."
   },
   {
     "id": "scene-2",
-    "title": "Orage doux",
+    "title": "Cartographie du souffle",
     "video": "/assets/scenes/scene2.mp4",
-    "text": "Adoucissez la foudre pour protéger le nid.",
-    "questions": [],
-    "game": "LightningGame"
+    "text": "Le nid projette des trajectoires de lumière. Redessine-les pour guider l’air vers les plumes.",
+    "questions": [
+      {
+        "q": "Quel chemin suit ton trait ?",
+        "choices": ["Nord magnétique", "Courbe spiralée", "Retour au centre"]
+      }
+    ],
+    "game": "BubbleGame",
+    "gameHint": "Déplace la bulle le long des flux lumineux."
   },
   {
     "id": "scene-3",
-    "title": "Bulle de sécurité",
+    "title": "Orage apprivoisé",
     "video": "/assets/scenes/scene3.mp4",
-    "text": "Guide la bulle autour du nid.",
+    "text": "Une foudre douce drape la clairière. Glisse ton doigt pour calmer la pulsation électrique.",
     "questions": [],
-    "game": "BubbleGame"
+    "game": "LightningGame",
+    "gameHint": "Dose l’intensité pour apaiser la clairière."
   },
   {
     "id": "scene-4",
-    "title": "Yin Yang apaisant",
+    "title": "Equilibre Yin-Yang",
     "video": "/assets/scenes/scene4.mp4",
-    "text": "Faites tourner le cercle pour équilibrer.",
+    "text": "Deux forces contraires cherchent l’alignement. Fais tourner le cercle jusqu’à ressentir l’équilibre.",
+    "questions": [
+      {
+        "q": "Quel mot décrit la sensation finale ?",
+        "choices": ["Harmonie", "Flux", "Suspension"]
+      }
+    ],
+    "game": "YinYangGame",
+    "gameHint": "Fais tourner Yin et Yang jusqu’à trouver ton rythme."
+  },
+  {
+    "id": "scene-5",
+    "title": "Traverse céleste",
+    "video": "/assets/scenes/scene5.mp4",
+    "text": "Le nid s’élève dans les nuages d’algorithmes. Protège-le des turbulences qui approchent.",
     "questions": [],
-    "game": "YinYangGame"
+    "game": "BubbleGame",
+    "gameHint": "Glisse la bulle pour dévier les vents."
+  },
+  {
+    "id": "scene-6",
+    "title": "Pulse du tonnerre",
+    "video": "/assets/scenes/scene6.mp4",
+    "text": "Chaque éclair contient un souvenir. Réduis l’intensité pour révéler les silhouettes cachées.",
+    "questions": [
+      {
+        "q": "Quel souvenir aperçois-tu ?",
+        "choices": ["Un reflet d’aile", "Un fragment de code", "Un sourire ancien"]
+      }
+    ],
+    "game": "LightningGame",
+    "gameHint": "Glisse jusqu’à faire briller le souvenir."
+  },
+  {
+    "id": "scene-7",
+    "title": "Rivage des pigments",
+    "video": "/assets/scenes/scene7.mp4",
+    "text": "Le nid fabuleux attend ses couleurs finales. Peins-le pour qu’il puisse s’ancrer dans ce monde.",
+    "questions": [],
+    "game": "ColoringGame",
+    "gameHint": "Tapote et étire les pigments du rivage."
+  },
+  {
+    "id": "scene-8",
+    "title": "Synthèse des forces",
+    "video": "/assets/scenes/scene8.mp4",
+    "text": "Toute l’histoire converge ici. Fais pivoter Yin et Yang pour sceller l’alliance des mondes.",
+    "questions": [
+      {
+        "q": "Quel souhait déposes-tu dans le cercle ?",
+        "choices": ["Protection", "Transcendance", "Partage"]
+      }
+    ],
+    "game": "YinYangGame",
+    "gameHint": "Fais tourner jusqu’à sceller ton souhait."
   }
 ]

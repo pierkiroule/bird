@@ -1,44 +1,57 @@
 import React, { useRef, useState } from 'react'
 
-export default function BubbleGame() {
-  const boxRef = useRef(null)
+const clamp = (value, min, max) => Math.min(Math.max(value, min), max)
+
+export default function BubbleGame({ hint = 'Déplace la bulle pour protéger le nid.' }) {
+  const areaRef = useRef(null)
   const [pos, setPos] = useState({ x: 50, y: 50 })
+  const [dragging, setDragging] = useState(false)
 
-  function onPointerDown(e) {
-    const el = boxRef.current
-    if (!el) return
-    el.setPointerCapture(e.pointerId)
-    const startX = e.clientX
-    const startY = e.clientY
-    const sx = pos.x
-    const sy = pos.y
+  function updatePosition(e) {
+    const area = areaRef.current
+    if (!area) return
+    const rect = area.getBoundingClientRect()
+    const point = e.touches ? e.touches[0] : e
+    if (!point) return
+    const x = ((point.clientX - rect.left) / rect.width) * 100
+    const y = ((point.clientY - rect.top) / rect.height) * 100
+    setPos({ x: clamp(x, 0, 95), y: clamp(y, 0, 95) })
+  }
 
-    function move(ev) {
-      const dx = ev.clientX - startX
-      const dy = ev.clientY - startY
-      setPos({ x: sx + dx, y: sy + dy })
-    }
-    function up(ev) {
-      el.removeEventListener('pointermove', move)
-      el.removeEventListener('pointerup', up)
-      try { el.releasePointerCapture(ev.pointerId) } catch {}
-    }
+  function start(e) {
+    e.preventDefault()
+    setDragging(true)
+    updatePosition(e)
+  }
 
-    el.addEventListener('pointermove', move)
-    el.addEventListener('pointerup', up)
+  function move(e) {
+    if (!dragging) return
+    e.preventDefault()
+    updatePosition(e)
+  }
+
+  function end() {
+    setDragging(false)
   }
 
   return (
-    <div className="bubble-game">
-      <div className="bubble-area">
+    <section className="mini-game-card bubble-game">
+      <div
+        ref={areaRef}
+        className="bubble-area"
+        onPointerDown={start}
+        onPointerMove={move}
+        onPointerUp={end}
+        onPointerLeave={end}
+        onPointerCancel={end}
+      >
         <div
-          ref={boxRef}
-          onPointerDown={onPointerDown}
           className="bubble"
-          style={{ transform: `translate(${pos.x}px, ${pos.y}px)` }}
+          style={{ left: `${pos.x}%`, top: `${pos.y}%` }}
+          aria-label="Bulle protectrice"
         />
       </div>
-      <p className="hint">Déplace la bulle pour protéger le nid.</p>
-    </div>
+      <p className="hint">{hint}</p>
+    </section>
   )
 }
