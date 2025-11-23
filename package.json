@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npx vite build",
+    "vercel-build": "npm install --include=dev && npm run build",
     "preview": "vite preview"
   },
   "dependencies": {
